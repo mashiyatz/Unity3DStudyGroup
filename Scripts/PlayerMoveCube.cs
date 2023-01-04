@@ -8,6 +8,8 @@ public class PlayerMoveCube : MonoBehaviour
     public float rotationSpeed;
     public int method;
 
+    public GameObject particlePrefab;
+    public GameObject restartButton;
     private Rigidbody rb;
 
     void Start()
@@ -29,6 +31,12 @@ public class PlayerMoveCube : MonoBehaviour
     {
         // For difference between Update() and FixedUpdate() see:
         // https://stackoverflow.com/questions/34447682/what-is-the-difference-between-update-fixedupdate-in-unity
+        if (rb.velocity.y <= -20f)
+        {
+            Instantiate(particlePrefab, transform.position, transform.rotation);
+            restartButton.SetActive(true);
+            Destroy(gameObject);
+        }
         if (method == 3) MoveCubeWithRigidBody();
     }
 
