@@ -13,11 +13,13 @@ public class RestartGame : MonoBehaviour
     public PlayerMoveCube player;
     public ResizePlatform resize;
     public FollowPlayer follow;
+    public AudioSource canvasAudioSource;
 
     void Start()
     {
         button = GetComponent<Button>();
         button.onClick.AddListener(OnRetryButtonClick);
+
         panel.SetActive(true);
         generator.enabled = false;
         player.enabled = false;
@@ -25,10 +27,21 @@ public class RestartGame : MonoBehaviour
         follow.enabled = false;
     }
 
-    void OnRetryButtonClick()
+    private void Update()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        if (Input.GetKey(KeyCode.Return)) button.onClick.Invoke();
     }
 
+    void OnRetryButtonClick()
+    {
+        canvasAudioSource.Play();
+        StartCoroutine(WaitForAudio());
+    }
+
+    IEnumerator WaitForAudio()
+    {
+        yield return new WaitForSeconds(0.25f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
 
 }
