@@ -57,9 +57,10 @@ It sounds like we'll need to define some speed first. Above the `Start()` functi
 public float speed;
 ```
 
-A `float` represents a number that can have a fractional value, as opposed to an `int` or integer, which is always a whole number. `speed` is the name we've given the variable. What's this `public` thing? Save your script and go back to the Unity window. If you click on the cube again and check the Inspector, you'll see that the parameter `Speed` has appeared inside the Move Cube component we made a moment ago. If a variable or function inside a class is public, it basically means that it can be accessed from outside the instance of the class. In Unity, it also means that you can edit the variable from the editor.  
+A `float` represents a number that can have a fractional value, as opposed to an `int` or integer, which is always a whole number. `speed` is the name we've given the variable. What's this `public` thing? Save your script and go back to the Unity window. If you click on the cube again and check the Inspector, you'll see that the parameter `Speed` has appeared inside the Move Cube component we made a moment ago. If a variable or function inside a class is public, it basically means that it can be accessed from outside the script. In Unity, it also means that you can edit the variable from the editor. 
 
 ![image](https://user-images.githubusercontent.com/43973044/211079455-4bee7461-5805-4207-a147-0281227013ec.png)
 
+What if you don't want a variable to be accessed from outside? Anything unlabeled, like the `Start()` and `Update()` functions, is private by default. You can also be explicit by writing `private` instead of `public`. We'll use private variables in a bit, but let's get this cube moving first. 
 
 ### Follow a Cube
