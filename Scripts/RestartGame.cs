@@ -10,10 +10,11 @@ public class RestartGame : MonoBehaviour
     public GameObject panel;
 
     public CubeGenerator generator;
-    public PlayerMoveCube player;
+    public PlayerControl player;
     public ResizePlatform resize;
     public FollowPlayer follow;
     public AudioSource canvasAudioSource;
+    public GameObject healthBar;
 
     void Start()
     {
@@ -25,6 +26,7 @@ public class RestartGame : MonoBehaviour
         player.enabled = false;
         resize.enabled = false;
         follow.enabled = false;
+        healthBar.SetActive(false);
     }
 
     private void Update()
@@ -35,12 +37,13 @@ public class RestartGame : MonoBehaviour
     void OnRetryButtonClick()
     {
         canvasAudioSource.Play();
+        button.enabled = false;
         StartCoroutine(WaitForAudio());
     }
 
     IEnumerator WaitForAudio()
     {
-        yield return new WaitForSeconds(0.25f);
+        while (canvasAudioSource.isPlaying) yield return null;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 

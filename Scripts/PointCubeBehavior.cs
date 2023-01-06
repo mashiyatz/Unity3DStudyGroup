@@ -31,6 +31,7 @@ public class PointCubeBehavior : MonoBehaviour
         if (collision.collider.CompareTag("Player"))
         {
             Instantiate(particlePrefab, transform.position, transform.rotation);
+            PlayerControl.playerAudio.Play();
             UpdateScore.score += 1;
             Destroy(gameObject);
         }

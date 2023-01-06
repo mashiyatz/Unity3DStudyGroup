@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FollowPlayer : MonoBehaviour
 {
-    public PlayerMoveCube controller;
+    public PlayerControl controller;
     public Transform player;
     public Transform cameraTransform;
     public Vector3 cameraDistance;

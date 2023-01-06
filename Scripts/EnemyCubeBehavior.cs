@@ -28,10 +28,10 @@ public class EnemyCubeBehavior : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.CompareTag("Player"))
+        if (collision.collider.CompareTag("Player") || collision.collider.CompareTag("Enemy"))
         {
             Instantiate(particlePrefab, transform.position, transform.rotation);
-            UpdateScore.score -= 2;
+            if (collision.collider.CompareTag("Player")) PlayerControl.currentHP -= 2;
             Destroy(gameObject);
         }
         if (collision.collider.CompareTag("Platform")) timeOfLeavingPlatform = Time.fixedTime;

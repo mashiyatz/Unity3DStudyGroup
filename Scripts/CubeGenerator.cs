@@ -10,28 +10,36 @@ public class CubeGenerator : MonoBehaviour
     public float interval;
     public Transform player;
 
-    private float newIntervalTime;
-    private float cubeGenerationTime;
+    private float timeOfLastIntervalUpdate;
+    private float timeOfLastCubeGeneration;
+    private int maxNumberOfGenerations;
 
     void Start()
     {
-        newIntervalTime = Time.fixedTime;
-        cubeGenerationTime = Time.fixedTime;
+        timeOfLastIntervalUpdate = Time.fixedTime;
+        timeOfLastCubeGeneration = Time.fixedTime;
+        maxNumberOfGenerations = 2;
         InvokeRepeating("GeneratePointCube", 2.0f, interval * 1.5f); 
     }
 
     private void FixedUpdate()
     {
-        if (Time.fixedTime - cubeGenerationTime > interval)
+        if (Time.fixedTime - timeOfLastCubeGeneration > interval)
         {
-            GenerateEnemyCube();
-            cubeGenerationTime = Time.fixedTime;
+            int random = Random.Range(0, maxNumberOfGenerations);
+            for (int i=0; i<=random; i++) GenerateEnemyCube();
+            timeOfLastCubeGeneration = Time.fixedTime;
         }
 
-        if (Time.fixedTime - newIntervalTime > 10f)
+        if (Time.fixedTime - timeOfLastIntervalUpdate > 10f && interval > 0.5f)
         {
-            interval -= 0.1f;
-            newIntervalTime = Time.fixedTime;
+            interval -= 0.25f;
+            
+            if (interval == 4.0f) maxNumberOfGenerations += 1;
+            if (interval == 2.5f) maxNumberOfGenerations += 1;
+            if (interval == 1.0f) maxNumberOfGenerations += 1;
+
+            timeOfLastIntervalUpdate = Time.fixedTime;
         }
     }
 
