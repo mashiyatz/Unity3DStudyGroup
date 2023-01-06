@@ -63,4 +63,53 @@ A `float` represents a number that can have a fractional value, as opposed to an
 
 What if you don't want a variable to be accessed from outside? Anything unlabeled, like the `Start()` and `Update()` functions, is private by default. You can also be explicit by writing `private` instead of `public`. We'll use private variables in a bit, but let's get this cube moving first. 
 
-### Follow a Cube
+There are several ways of moving things in Unity, but one is by simply incrementing the position of the object in each `Update()` loop. In `Update()`, write the following three lines.
+
+```cs
+Vector3 deltaPosition = Vector3.zero;
+deltaPosition.z = speed * Time.deltaTime;
+transform.position += deltaPosition;
+```
+
+We're introducing a few new things here. First, we are creating a new variable `deltaPosition` that is a `Vector3`. In Unity, a Vector3 is a data type that holds three floats corresponding to the x, y, and z axes - in other words, it's a useful data type for describing things in 3D space. We initialize `deltaPosition` as (0, 0, 0) using the shorthand `Vector3.zero`. Since we define this within `Update()`, this means that every frame, `deltaPosition` will reset. 
+
+In the next line, we update just the `z` value of `deltaPosition` by setting it equal to the speed we created above times `Time.deltaTime`, which is the amount of time that passes in a single frame. Recall that distance is speed times time, so `deltaPosition` is simply a tiny distance. `Time.deltaTime` is used instead of explicit time values to account for fluctuations in framerate that may affect the frequency of the `Update()` loop. Think of it this way: imagine your game normally runs at 60fps, but on a different device it has to run at 30fps. If you use `Time.deltaTime`, two players playing on different devices will get to experience the game the same way, since the `deltaPosition`, for example, will scale accordingly. 
+
+In the last line, we add our tiny distance to the cube's position, which is `transform.position`. Recall how in Unity, the Transform component includes values for position, rotation, and scale. You can retrieve these values from the object a script is attached to using `transform` (with a lowercase t). We use `+=`, which is the same as writing `transform.position = transform.position + deltaPosition`. 
+
+If you've followed these directions, and then save your code and press Play, you might see...a completely motionless cube! That's because we haven't updated our `speed` value in the Inspector yet. Choose a value that makes sense to you. In general, scales in Unity are in meters, so a value of 5 would mean moving 5 meters per second (at least in our code). If you press Play again, you should see the cube move. If it's hard to tell from the Game view, find the cube in the Scene view. Nice! But in the (paraphrased) words of Tom Igoe, "It needs more interaction." So let's add input from the player. 
+
+Essentially, we want the cube to move forward when we press W, backward when we press S, and left or right if we press A or D, respectively. We can wait for the player to press a specific button by adding the following conditional (i.e., if-statement) to the `Update()` loop.
+
+```cs
+if (Input.GetKey(KeyCode.W)) {
+    // do stuff
+    ;
+}
+```
+
+If you'd like, try using a combination of this conditional and the above to write a script for moving the cube with player input before moving on. Feel free to create new variables as needed. The more you practice, the more you'll notice other approaches you can take. Here's how I would script it, with a brief explanation below. 
+
+```cs
+Vector3 direction = Vector3.zero;
+
+if (Input.GetKey(KeyCode.W)) direction += Vector3.forward;
+if (Input.GetKey(KeyCode.S)) direction += Vector3.back;
+if (Input.GetKey(KeyCode.A)) direction += Vector3.left;
+if (Input.GetKey(KeyCode.D)) direction += Vector3.right;
+
+direction.Normalize();
+
+Vector3 deltaPosition = speed * Time.deltaTime * direction;
+transform.position += deltaPosition;
+```
+
+You may recall from physics class from back in the day the difference between speed and velocity, which we use interchangeably in everyday life. Speed is a scalar, or just a magnitude, a number. Velocity is a vector, which has magnitude and direction. This is the difference between saying the car travels at 30km/hour and that it's traveling 30km/hour due north. If we're going to make an object move, we need both the speed at which it will move and the direction of its movement to determine its displacement, or where it ends up, after a certain amount of time. Separating these pieces, magnitude and direction, will help us organize our code as well. 
+
+Anyway, I started with a new `Vector3` called `direction`, which I update using the WASD inputs from the player. Just like before, I'm using Unity's built-in shorthand. In Unity, **forward** corresponds to the positive-z direction, **right** corresponds to the positive-x, and **up** corresponds to the positive-y direction, so `Vector3.forward` represents the vector (0, 0, 1), `Vector3.back` represents the vector (0, 0, -1), and so on. 
+
+After updating the direction with the player's input, I **normalize** the direction vector. This means that I change its magnitude to 1. Without getting too much into the details, the reason I want to do this is that without it, the cube would move more quickly diagonally (e.g., if I pressed both W and A at the same time), than it would when pressing just W, S, A or D. You can test this out yourself by commenting out `direction.Normalize()`. 
+
+After that, I create a `deltaPosition` variable that is the product of speed, time, and direction, and add it to the cube's current position.
+
+How does this compare with how you would move a cube? Note that there isn't a "wrong" way, but different solutions that may meet different needs. For example, maybe you don't want to move the cube diagonally, in which case, you might not need a direction vector at all. Or maybe you'd like to make smaller, slighter turns, in which case you would need to use access the Transform's rotation values (which we will do next!). Once you can write your own scripts, there are plenty of ways you can solve a problem! Don't be afraid to explore! 
