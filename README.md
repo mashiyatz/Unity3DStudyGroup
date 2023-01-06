@@ -50,6 +50,16 @@ The top three lines that begin with `using` are importing essential libraries in
 
 Below that we see `public class MoveCube : MonoBehaviour`. MoveCube is of course the name of our script. In creating this script, we also created a **class**, which is essentially a group of related functions that create a blueprint for a data type. By default, our new MoveCube code will inherent the `MonoBehaviour` class, which is the base class of every Unity script. The details aren't so important - all you need to know is that by attaching this script to your cube, you've created a new **instance** of MoveCube in your scene. This will allow us to access some useful information later.
 
-Inside the class is where we'll write our code. By default we have a `Start()` function and `Update()` function. These correspond to `setup()` and `loop()` in Arduino, or `setup()` and `draw()` in p5. 
+Inside the class is where we'll write our code. By default we have a `Start()` function and `Update()` function. These correspond to `setup()` and `loop()` in Arduino, or `setup()` and `draw()` in p5. Before we write anything in these, though, let's take a step back and think about what we want to do in this script: For now, let's just move the cube at some constant speed. Later, we'll try to control the cube ourselves using the WASD keys.
+
+It sounds like we'll need to define some speed first. Above the `Start()` function, let's define a speed variable by writing the following:
+```cs
+public float speed;
+```
+
+A `float` represents a number that can have a fractional value, as opposed to an `int` or integer, which is always a whole number. `speed` is the name we've given the variable. What's this `public` thing? Save your script and go back to the Unity window. If you click on the cube again and check the Inspector, you'll see that the parameter `Speed` has appeared inside the Move Cube component we made a moment ago. If a variable or function inside a class is public, it basically means that it can be accessed from outside the instance of the class. In Unity, it also means that you can edit the variable from the editor.  
+
+![image](https://user-images.githubusercontent.com/43973044/211079455-4bee7461-5805-4207-a147-0281227013ec.png)
+
 
 ### Follow a Cube
