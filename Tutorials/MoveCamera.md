@@ -46,6 +46,10 @@ Like in our first script, we start by declaring variables. This time, we create 
 
 Go back to Unity, click on the camera in the Hierarchy, and check the newly added Follow Player component in the Inspector. Since the variable `cube` is public, you should see a new parameter **Cube** added with a box that says "None (Transform)" right next to it. Drag and drop the cube object from the Hierarchy and into this box, and you'll see it fill immediately with "Cube (Transform)". In doing so, we have set the Transform variable in our script to the Transform of our cube!
 
+![followPlayer](https://user-images.githubusercontent.com/43973044/211208627-4387093b-bca4-4400-b798-7277beb14805.png)
+
+![followPlayer2](https://user-images.githubusercontent.com/43973044/211208630-b58e064c-4773-4af0-9f25-d69134ff3a69.png)
+
 The variable `offset` is private because we only plan on using it within this script. Inside `Start()`, we set `offset` as the camera's position. Since `Start()` only executes once, and before `Update()`, `offset` will be the position you set the camera in the Scene view.
 
 Finally, we update the camera's position (remember that lowercase-t `transform` corresponds to the transform of the object to which the script is attached) by adding `offset` to the cube's position. 
