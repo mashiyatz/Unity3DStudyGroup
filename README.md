@@ -117,4 +117,4 @@ How does this compare with how you would move a cube? Note that there isn't a "w
 ## Tutorials
 If you'd like to follow along what we're working on in our study group, check out these tutorials.
 - [Move Camera](/Tutorials/MoveCamera.md)
-- [Move Camera](/Tutorials/Rotation.md)
+- [Rotation](/Tutorials/Rotation.md)
