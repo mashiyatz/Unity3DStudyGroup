@@ -9,9 +9,13 @@ Next, let's set the position of the camera so that it gives us a good view of th
 
 While we're at it, let's also change the Scene's background using the Camera component. Unity's default Skybox turns everything in the background below the horizon a dull gray. Change the `Clear Flags` setting to `Solid Color` and choose a color you like. In the Game view, you should see the background change accordingly.  
 
+![image](https://user-images.githubusercontent.com/43973044/211208530-cef8122f-a819-4944-988c-1eb6b0c0f9eb.png)
+
 You'll notice that the cube is still hard to see because it's the same color as the plane. We can fix that by changing its Material. Materials in Unity change the appearance of surfaces using Shaders. To create a new material, right click on the assets folder > Create > Material. You can name the new material whatever you want, but just as we did with our script, put it inside a new Materials folder under Assets. 
 
 Click on your new material, and you'll see a bunch of settings available in the inspector. For now, let's just change the color by clicking on the color box next to **Albedo**. Choose a color you like, and then drag and drop the Material onto the cube in the Scene view, or onto its name in the Hierarchy. You should see the color change immediately! 
+
+![image](https://user-images.githubusercontent.com/43973044/211208573-f8873868-536a-42b0-bc29-a431f5fd4a34.png)
 
 ## Parents and Children
 
@@ -42,6 +46,10 @@ Like in our first script, we start by declaring variables. This time, we create 
 
 Go back to Unity, click on the camera in the Hierarchy, and check the newly added Follow Player component in the Inspector. Since the variable `cube` is public, you should see a new parameter **Cube** added with a box that says "None (Transform)" right next to it. Drag and drop the cube object from the Hierarchy and into this box, and you'll see it fill immediately with "Cube (Transform)". In doing so, we have set the Transform variable in our script to the Transform of our cube!
 
+![followPlayer](https://user-images.githubusercontent.com/43973044/211208627-4387093b-bca4-4400-b798-7277beb14805.png)
+
+![followPlayer2](https://user-images.githubusercontent.com/43973044/211208630-b58e064c-4773-4af0-9f25-d69134ff3a69.png)
+
 The variable `offset` is private because we only plan on using it within this script. Inside `Start()`, we set `offset` as the camera's position. Since `Start()` only executes once, and before `Update()`, `offset` will be the position you set the camera in the Scene view.
 
 Finally, we update the camera's position (remember that lowercase-t `transform` corresponds to the transform of the object to which the script is attached) by adding `offset` to the cube's position. 
@@ -51,5 +59,7 @@ When you Play, you should be able to follow the cube on screen just like before.
 ## Why Bother Scripting It?
 
 Our FollowPlayer script might seem like a few extra steps we don't need, and indeed it might be, depending on what you're making. But try this: make the camera a child of the cube again, and now rotate the cube in the Scene window or by changing its rotation values in the Inspector. A child's transform - that is, not just its position - is relative to its parent, so whenever the cube rotates (or stretches), so will the camera.
+
+![image](https://user-images.githubusercontent.com/43973044/211208442-f85f555a-ae8e-4815-868a-0956b7a9da8c.png)
 
 This might not be a problem if you're just translating the cube, but if you implement rotations or collisions that could potentially knock the cube over (and we will!), then you're better off scripting the camera's position. 

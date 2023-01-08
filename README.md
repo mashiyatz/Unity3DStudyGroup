@@ -113,3 +113,7 @@ After updating the direction with the player's input, I **normalize** the direct
 After that, I create a `deltaPosition` variable that is the product of speed, time, and direction, and add it to the cube's current position.
 
 How does this compare with how you would move a cube? Note that there isn't a "wrong" way, but different solutions that may meet different needs. For example, maybe you don't want to move the cube diagonally, in which case, you might not need a direction vector at all. Or maybe you'd like to make smaller, slighter turns, in which case you would need to use access the Transform's rotation values (which we will do next!). Once you can write your own scripts, there are plenty of ways you can solve a problem! Don't be afraid to explore! 
+
+## Tutorials
+If you'd like to follow along what we're working on in our study group, check out these tutorials.
+- [Move Camera](/Tutorials/MoveCamera.md)
