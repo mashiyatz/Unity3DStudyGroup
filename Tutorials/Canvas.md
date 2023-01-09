@@ -52,7 +52,7 @@ Rename these new game objects appropriately, and resize and rearrange them on sc
 
 When positioning these components, you might want to work with a fixed size Game view as well. Note that you can choose an aspect ratio in the Game window. If you click on the Canvas, you will also see a **Canvas Scaler** component in the Inspector. Change the UI Scale Mode to "Scale With Screen Size", and choose a familiar Reference Resolution, such as 1920 by 1080. Make sure to edit font and window sizes accordingly! 
 
-//
+![canvas](https://user-images.githubusercontent.com/43973044/211419861-08becad4-9e0f-4057-bb3d-b973450ebcfb.png)
 
 Now we have a proper Game Over screen, but if you Play now, you'll see that it's displayed from the beginning. Not to mention, clicking on the Retry button doesn't do anything. 
 
@@ -91,9 +91,9 @@ Create a new **public** function that contains our Scene reload script. We'll us
 
 Back in the editor, click on the Retry button in the Hierarchy window and find its Button component in the Inspector. At the bottom of the component, you'll see "On Click()" over what seems like an empty menu. These are functions that Unity will run upon clicking the button. Click on the plus sign, and you'll see three small windows appear. Drag and drop your player cube object from the Hierarchy to where it says "None". On the right where it says No Function, you'll see that you can now search the dropdown menu. In the menu, select "MoveCube", and then "ReloadScene()". Now, when you press the Retry button, it should reload the Scene!
 
-//
+![button1](https://user-images.githubusercontent.com/43973044/211419893-c8e963f5-0cec-4e33-9a93-1efa789fc4e1.png)
 
-//
+![button2](https://user-images.githubusercontent.com/43973044/211419911-2c8c5f24-2bbc-4729-8ca9-38b9d229ffb4.png)
 
 ## Updating UI Text
 
@@ -148,3 +148,4 @@ void Update()
 
 Play the game and you should see the score update on screen upon each collision with a treasure object! If the text is a little hard to see because of the white plane, try using a new Material for the plane to add some contrast.
 
+![score](https://user-images.githubusercontent.com/43973044/211419933-709e78fc-598c-4792-95b2-bd50218b6770.png)
