@@ -119,3 +119,4 @@ If you'd like to follow along what we're working on in our study group, check ou
 - [Follow the Cube](/Tutorials/MoveCamera.md)
 - [Rotate the Cube](/Tutorials/Rotation.md)
 - [Collide with the Cube](/Tutorials/Physics.md)
+- [UI with the Cube](/Tutorials/Canvas.md)
