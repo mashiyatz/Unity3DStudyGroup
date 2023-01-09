@@ -8,7 +8,7 @@ It's easy enough to add more objects to our Scene by adding them to the Hierarch
 
 First, we'll need to create what's called a Prefab. In Unity, a prefab is essentially a template of a GameObject that includes all of its components, including scripts. You can create a prefab of any object in the Hierarchy simply by dragging and dropping it into your Assets folder in the Project window. The object won't leave the Hierarchy - instead you'll see its name highlighted blue, while a new object will appear among your assets with the same name and a blue cube icon next to it. If you click on this new object, you'll see at the top of the Inspector that it is a Prefab Asset.  
 
-//
+![prefab](https://user-images.githubusercontent.com/43973044/211386431-ab8f6e3c-d194-4ca0-90a6-e9440d7ecf26.png)
 
 In your Scene, create a new cube (or any 3D object of your choice) and give it a unique name (I'll call it enemy, or enemy cube) and Material to distinguish it from our original cube, which we will now call the player cube. Drag and drop the new object from the Scene and into a Prefabs folder in your Assets, **and then delete it from the Scene**. Don't worry, it'll be back soon! 
 
@@ -46,9 +46,9 @@ Our random position is on the XZ-plane, where the plane in our scene lies. I've 
 
 The `Instantiate` function's first argument is the object we want to generate, the second is the position where it will generate, the third is its orientation, and the last is the object's parent in the Hierarchy. We will generate our enemy object at the new random position. Since we're not too concerned with its rotation for now, we'll just use the rotation of our EnemyGenerator object, which will also be the parent of the enemy objects generated.  
 
-Save your script, and in the editor, set the "Interval" and "Max Distance" values in the Inspector. To set the "Enemy Prefab", drag and drop your enemy prefab from the Inspector to the box. Press Play, and you should see some new companions (or I suppose enemies?) appear over time! 
+Save your script, and in the editor, set the "Interval" and "Max Distance" values in the Inspector. To set the "Enemy Prefab", drag and drop your enemy prefab from the Inspector to the box. Press Play, and you should see some new companions (or I suppose enemies?) appear over time!
 
-//
+![instantiation](https://user-images.githubusercontent.com/43973044/211386468-2b8a137d-2156-4b5e-8320-c3679359e9fe.png)
 
 ## Adding Rigidbodies
 
@@ -58,7 +58,7 @@ Select the player cube, and then Add Component in the Inspector. Search for and 
 
 Now see what happens when you press Play. You should be able to push the enemy objects with the player cube, even over the edge. Once you do, you'll watch them fall towards nothingness! 
 
-//
+![collision](https://user-images.githubusercontent.com/43973044/211386559-c3a6a463-3325-488e-9b29-3a1571b02eef.png)
 
 Back in the editor, uncheck **Use Gravity** in the player cube's Rigidbody, and you should see that while the enemy objects fall off the edge of the plane, the player cube will not, as expected. Next, check both **Use Gravity** and **Is Kinematic**. This time, you'll see the same thing, even though **Use Gravity** is checked! What's going on? Let's try one final test: set the player cube's Rigidbody back to its original settings, but check **Is Kinematic** for the enemy prefab. Now you'll see that the enemy objects won't budge at all!  
 
@@ -70,7 +70,7 @@ For now, let's leave kinematics off for both the player cube and enemy objects.
 
 Even though we can push our enemies off the plane, it doesn't mean they disappear from the Scene. You can confirm this by keeping an eye on the Hierarchy. Recall that we made the EnemyGenerator the parent of all newly generated enemy objects. Over time, you'll see a longer and longer list of newly generated enemy objects underneath, no matter how far below the plane they've fallen!
 
-//
+![generation](https://user-images.githubusercontent.com/43973044/211386596-c864e6c7-f97d-4cb3-b021-6e8719988050.png)
 
 First, let's set a timer on these newly generated enemy objects so that they self-destruct after a few seconds. This will help us prevent our Hierarchy from getting too crowded. Add a script EnemyBehavior to the enemy object prefab. Write the following code:
 
@@ -106,6 +106,6 @@ We can identify what the object collides with using `collision.collider.gameObje
 
 What is a "tag"? In the Inspector, right below the object's name, you should see the label Tag next to a dropdown menu. Most of the objects in your Scene should be untagged by default. Some tags in the dropdown include "Player", "GameCamera", and "MainController". Let's assign the player cube the "Player" tag.   
 
-//
+![tag](https://user-images.githubusercontent.com/43973044/211386626-d1cf1abc-e113-419c-b387-88b91b273883.png)
 
 Now, we should see the enemy object destroyed upon touching the player cube!  
