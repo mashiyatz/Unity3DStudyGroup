@@ -116,7 +116,7 @@ How does this compare with how you would move a cube? Note that there isn't a "w
 
 ## Tutorials
 If you'd like to follow along what we're working on in our study group, check out these tutorials.
-- [Follow the Cube](/Tutorials/MoveCamera.md)
-- [Rotate the Cube](/Tutorials/Rotation.md)
-- [Collide with the Cube](/Tutorials/Physics.md)
-- [UI with the Cube](/Tutorials/Canvas.md)
+1. [Follow the Cube](/Tutorials/01-Camera.md)
+2. [Rotate the Cube](/Tutorials/02-Rotation.md)
+3. [Collide with the Cube](/Tutorials/03-Collisions.md)
+4. [UI with the Cube](/Tutorials/04-Canvas.md)
