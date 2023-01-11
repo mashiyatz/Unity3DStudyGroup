@@ -30,7 +30,7 @@ public class PlayerControl : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space)) method = method + 1 > 3 ? 1 : method + 1;
 
-        if (method == 1) MoveCube();
+        if (method == 1) MoveCubeSimple();
         else if (method == 2) MoveAndRotateCube();
     }
 
@@ -57,7 +57,7 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
-    private void MoveCube()
+    private void MoveCubeSimple()
     {
         Vector3 direction = Vector3.zero;
 

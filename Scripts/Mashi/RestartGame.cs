@@ -12,7 +12,7 @@ public class RestartGame : MonoBehaviour
     public CubeGenerator generator;
     public PlayerControl player;
     public ResizePlatform resize;
-    public FollowPlayer follow;
+    public CameraFollow follow;
     public AudioSource canvasAudioSource;
     public GameObject healthBar;
 

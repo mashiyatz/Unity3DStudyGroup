@@ -32,7 +32,7 @@ public class PointCubeBehavior : MonoBehaviour
         {
             Instantiate(particlePrefab, transform.position, transform.rotation);
             PlayerControl.playerAudio.Play();
-            UpdateScore.score += 1;
+            ScoreKeeper.score += 1;
             Destroy(gameObject);
         }
     }

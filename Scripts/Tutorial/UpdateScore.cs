@@ -1,24 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
+using UnityEngine.UI;
 
 public class UpdateScore : MonoBehaviour
 {
     public static int score;
-    private TextMeshProUGUI textbox;
-
+    private Text textbox;
 
     void Start()
     {
         score = 0;
-        textbox = GetComponent<TextMeshProUGUI>();
+        textbox = GetComponent<Text>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (score < 0) score = 0;
-        textbox.text = string.Format("{0}", score);
+        textbox.text = score.ToString();
     }
 }
