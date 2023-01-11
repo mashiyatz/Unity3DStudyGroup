@@ -2,7 +2,7 @@
 Resources for the ITP 2023 Unity3D Winter Study Group, hosted by Mashi! Feel free to use and adapt any code written here for personal use.
 
 ## Getting Started
-These examples were made in Unity3D 2021.3, but should work with any recent or LTS version of Unity. I recommend installing Visual Studio as well, as it comes with Unity integration out of the box. If you're completely new to Unity or scripting in Unity, try following the steps below to get started. If you're already familiar with Unity and have some experience using a game engine, you can import this project as a .unitypackage and try to decipher my code yourself - my apologies in advance for my lack of commenting.
+These examples were made in Unity3D 2021.3, but should work with any recent or LTS version of Unity. I recommend installing Visual Studio as well, as it comes with Unity integration out of the box. If you're completely new to Unity or scripting in Unity, try following the steps below to get started. If you're already familiar with Unity and have some experience using a game engine, you can import this project as a .unitypackage - my apologies in advance for my lack of commenting.
 
 ### The Unity Interface
 When you open a new Unity project, you should see something like the image below. 
