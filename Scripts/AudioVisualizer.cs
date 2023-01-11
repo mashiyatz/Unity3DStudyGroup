@@ -18,32 +18,20 @@ public class AudioVisualizer : MonoBehaviour
     private float previousAudioValue;
     private float audioValue;
     private float timer;
-
     private bool isBeat;
 
     void Start()
     {
-        if (spectrumSize < 64) spectrumSize = 64;
-        if ((int)(Mathf.Log(spectrumSize) / Mathf.Log(2)) != Mathf.Log(spectrumSize) / Mathf.Log(2)) spectrumSize = 64; 
+        if ((int)(Mathf.Log(spectrumSize) / Mathf.Log(2)) != Mathf.Log(spectrumSize) / Mathf.Log(2) || spectrumSize < 64) spectrumSize = 64; 
     }
 
     void Update()
     {
         float[] spectrum = new float[spectrumSize];
-        AudioListener.GetSpectrumData(spectrum, 0, FFTWindow.BlackmanHarris);
+        AudioListener.GetSpectrumData(spectrum, 0, FFTWindow.BlackmanHarris); // consider replacing with source to isolate sound
         if (spectrum != null && spectrum.Length > 0) spectrumValue = spectrum[0] * 100;
-        // Debug.Log(spectrum[0]);
-        // try to visualize entire spectrum
 
         OnUpdate();
-    }
-
-    public void OnBeat()
-    {
-        timer = 0;
-        isBeat = true;
-        StopCoroutine("MoveToScale");
-        StartCoroutine("MoveToScale", beatScale);
     }
 
     private IEnumerator MoveToScale(Vector3 targetScale)
@@ -69,14 +57,15 @@ public class AudioVisualizer : MonoBehaviour
         previousAudioValue = audioValue;
         audioValue = spectrumValue;
 
-        if (previousAudioValue > bias && audioValue <= bias)
+        if ((previousAudioValue > bias && audioValue <= bias) || (previousAudioValue <= bias && audioValue > bias))
         {
-            if (timer > timeStep) OnBeat();
-        }
-
-        if (previousAudioValue <= bias && audioValue > bias)
-        {
-            if (timer > timeStep) OnBeat();
+            if (timer > timeStep)
+            {
+                timer = 0;
+                isBeat = true;
+                StopCoroutine("MoveToScale");
+                StartCoroutine("MoveToScale", beatScale);
+            }
         }
 
         timer += Time.deltaTime;
