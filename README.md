@@ -4,6 +4,18 @@ Resources for the ITP 2023 Unity3D Winter Study Group, hosted by Mashi! Feel fre
 ## Getting Started
 These examples were made in Unity3D 2021.3, but should work with any recent or LTS version of Unity. I recommend installing Visual Studio as well, as it comes with Unity integration out of the box. If you're completely new to Unity or scripting in Unity, try following the steps below to get started. If you're already familiar with Unity and have some experience using a game engine, you can import this project as a .unitypackage - my apologies in advance for my lack of commenting.
 
+**Note if you're importing!** After working with some others using different versions of Unity, I learned that small changes in acceptable syntax were introduced between the 2020 and 2021 versions. In Unity 2021, you can create a new variable of a certain type (e.g., Vector3) by just writing `new`. For example:
+
+```Vector3 pos = new(0, 0, 0);```
+
+However, in Unity 2020, you must be explicit about the type of the new thing you're creating:
+
+```Vector3 pos = new Vector3(0, 0, 0);```
+
+This should get rid of some errors when importing the packages in the release into your Unity 2020 project. However, when importing, pay attention to the window that shows what you will add to your project. If you're working alongside the tutorial, and then importing the package, for example, you might see some duplicate scripts, which will result in errors if you add them!  
+
+![image](https://user-images.githubusercontent.com/43973044/212915614-ae3f17fc-3eac-4e06-a0d3-4071233c102b.png)
+
 ### The Unity Interface
 When you open a new Unity project, you should see something like the image below. 
 
