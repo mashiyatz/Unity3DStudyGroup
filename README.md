@@ -14,8 +14,6 @@ However, in Unity 2020, you must be explicit about the type of the new thing you
 
 This should get rid of some errors when importing the packages in the release into your Unity 2020 project. However, when importing, pay attention to the window that shows what you will add to your project. If you're working alongside the tutorial, and then importing the package, for example, you might see some duplicate scripts, which will result in errors if you add them!  
 
-![image](https://user-images.githubusercontent.com/43973044/212915614-ae3f17fc-3eac-4e06-a0d3-4071233c102b.png)
-
 ### The Unity Interface
 When you open a new Unity project, you should see something like the image below. 
 
