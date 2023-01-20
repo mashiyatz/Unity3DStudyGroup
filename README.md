@@ -130,3 +130,4 @@ If you'd like to follow along what we're working on in our study group, check ou
 2. [Rotate the Cube](/Tutorials/02-Rotation.md)
 3. [Collide with the Cube](/Tutorials/03-Collisions.md)
 4. [UI with the Cube](/Tutorials/04-Canvas.md)
+5. [Sing with the Cube](/Tutorials/05-Microphone.md)
