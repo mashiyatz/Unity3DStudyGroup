@@ -6,17 +6,17 @@ As you might expect, Unity lets you add music and sound effects to your Scene th
 
 To start, let's make sure we can identify the components we'll be working with. Create a new scene and add a cube, and arrange the camera as you wish.
 
-//
+![boxOrthographic](https://user-images.githubusercontent.com/43973044/213873020-695607ec-5f36-462f-837d-2a7b21f48590.png)
 
 If you click on the Main Camera in your Scene and look at the Inspector, you'll notice a component called **Audio Listener**. Click on the cube, select Add Component through the Inspector, and look for the **Audio Source**. You will see a new component with an empty slot for an **Audio Clip** object on top. Find an .mp3 file of a song you like and add it to your Assets, which will automatically create an Audio Clip file for you. You can then drag this clip to the Audio Clip slot and Play your Scene - you should hear it play immediately! 
 
-//
+![audioSource](https://user-images.githubusercontent.com/43973044/213873185-c7817338-3c46-4b75-9703-7d90e38daf52.png)
 
 Note the **Play On Awake** and **Loop** checkboxes - if both are unchecked, the only way you can play or replay the attached sound is by scripting it (or creating a button or toggle to using UI to control it). We'll see some examples of controlling the sound through scripting later. 
 
 You can also change the clip's pitch and volume from the Inspector, as well as its **Spatial Blend**, which determines how much the sound is affected by 3D space. As an example, play your Scene and turn up the cube's Spatial Blend all the way to 3D in the Inspector, then move it around in the Scene view. You should notice that the closer you move the cube to the camera, the louder it will be. Exactly how much louder per distance moved might depend on the curve at the bottom of the Audio Source component, which shows volume picked up by the Audio Listener as a function of its distance from the source. 
 
-//
+![volumeRolloff](https://user-images.githubusercontent.com/43973044/213873194-d358d05d-7ed7-4c19-b1c5-35d2a1a3a8ec.png)
 
 Those are the very basics of Audio Sources and Listeners! We'll work with them a bit more below, but for now, let's turn off the Audio Source component by unchecking the box next to its label in the inspector. In this activity, we will provide our own sound! 
 
