@@ -1,3 +1,5 @@
 /Scripts/*.meta
+/Scripts/*/*.meta
+*.meta
 ..gitignore.un~
 
